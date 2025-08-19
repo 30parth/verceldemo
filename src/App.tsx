@@ -7,7 +7,6 @@ type Todo = {
   user_name: string;
   // Add other fields as required
 };
-type TodoInsert = Omit<Todo, "id">;
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -15,7 +14,7 @@ function App() {
   useEffect(() => {
     const getTodos = async () => {
       const { data: todos, error } = await supabase
-        .from<Todo, TodoInsert>("user")
+        .from("user")
         .select();
 
       if (error) {
