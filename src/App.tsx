@@ -13,9 +13,11 @@ function App() {
 
   useEffect(() => {
     const getTodos = async () => {
-      const { data: todos, error } = await supabase
-        .from("user")
-        .select();
+
+      let { data: todos, error } = await supabase
+        .from('todos')
+        .select('*')
+
 
       if (error) {
         console.error("Error fetching todos:", error);
