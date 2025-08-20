@@ -27,8 +27,27 @@ function App() {
       if (todos && todos.length > 1) {
         setTodos(todos);
       }
+
     };
 
+    const addUser = async () => {
+      const { data, error } = await supabase
+        .from('demousers')
+        .insert([
+          { user_name: 'Solanki Manav' },
+        ])
+        .select();
+
+      if (error) {
+        console.error("Error adding user:", error);
+        return;
+      }
+
+      console.log("User added:", data);
+      getTodos();
+    };
+
+    addUser();
     getTodos();
   }, []);
 
