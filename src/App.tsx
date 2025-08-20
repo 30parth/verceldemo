@@ -73,11 +73,11 @@ function App() {
 
   return (
     <>
-      <ul>
+      <ol>
         {todos.map((todo) => (
           <li key={todo.id}>{todo.user_name}</li>
         ))}
-      </ul>
+      </ol>
     </>
   );
 }
